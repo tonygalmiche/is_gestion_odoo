@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="is_report_invoice_document" name="is_report_invoice_document" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[hasclass('page')]" position="replace">
+                <div class="page">
+                    <style>
+                        table {
+                            border:0;
+                        }
+                        td,th{
+                            font-size:10pt;
+                            border-width:1px;
+                            border-style:solid; 
+                            border-color:black;
+                            padding:2mm;
+                        }
+                    </style>
+                    <div class="address row">
+                        <div class="col-5 offset-7">
+                            <b>
+                                <t t-if="o.partner_id.name"><span class="rs" t-field="o.partner_id.name"/><br /></t>
+                                <t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/><br /></t>
+                                <t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/><br /></t>
+                                <t t-if="o.partner_id.zip"><span t-field="o.partner_id.zip"/> </t>
+                                <t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/><br /></t>
+                            </b>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left"><span>Description</span></th>
+                                <th class="text-right" style="white-space: nowrap;">Montant HT</th>
+                                <th class="text-center"><span>TVA</span></th>
+                                <th class="text-right" style="white-space: nowrap;">Montant TTC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.invoice_line_ids" t-as="line">
+                                <tr>
+                                    <t t-if="not line.display_type" name="account_invoice_line_accountable">
+                                        <td name="account_invoice_line_name"><span t-field="line.name"/></td>
+                                        <td class="text-right">
+                                            <span t-field="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                        <td t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                            <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.invoice_line_tax_ids))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.price_total" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td colspan="4" style="border:0"/>
+                            </tr>
+                            <tr>
+                                <td style="border:0">
+                                    Délai de paiement : <b>A réception de facture</b>
+                                </td>
+                                <td colspan="2">Total HT</td>
+                                <td class="text-right"><span t-field="o.amount_untaxed"/></td>
+                            </tr>
+                            <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                                <tr>
+                                    <td style="border:0"/>
+                                    <td colspan="2">
+                                        <span t-esc="amount_by_group[0]"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="amount_by_group[3]" />
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td style="border:0"/>
+                                <td colspan="2"><b>Total TTC</b></td>
+                                <td class="text-right"><b> <span t-field="o.amount_total"/></b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    Paiement par chèque ou par virement sur ce compte : 
+                    <table>
+                        <tr>
+                            <td>IBAN (International Bank Account Number)</td>
+                            <td>BIC (Bank Identifier Code)</td>
+                        </tr>
+                        <tr>
+                            <td>FR76 1027 8025 0600 0202 7520 107</td>
+                            <td>CMCIFR2A</td>
+                        </tr>
+                    </table>
+                    <!--TODO : Il faut conserver cette partie pour des raisons d'héritage -->
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div>
+                                <table class="table table-sm"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

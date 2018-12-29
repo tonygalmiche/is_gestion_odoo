@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="is_crm_main_menu"
+        name="CRM"
+        sequence="1"
+    />
+    <menuitem
+        id="is_client_menu"
+        name="Clients"
+        parent="is_crm_main_menu"
+        sequence="10"
+        action="is_client_action"
+    />
+    <menuitem
+        id="is_affaire_menu"
+        name="Affaires"
+        parent="is_crm_main_menu"
+        sequence="20"
+        action="is_affaire_action"
+    />
+    <menuitem
+        id="is_main_facture_menu"
+        name="Factures"
+        parent="is_crm_main_menu"
+        sequence="30"
+    />
+    <menuitem
+        id="is_facture_menu"
+        name="Factures"
+        parent="is_main_facture_menu"
+        sequence="10"
+        action="is_account_invoice_action"
+    />
+    <menuitem
+        id="is_account_invoice_line_menu"
+        name="Lignes de factures"
+        parent="is_main_facture_menu"
+        sequence="20"
+        action="is_account_invoice_line_action"
+    />
+
+
+</odoo>

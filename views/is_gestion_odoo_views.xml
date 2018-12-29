@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- is.affaire -->
+    <record id="is_affaire_seq" model="ir.sequence">
+        <field name="name">Code Affaire</field>
+        <field name="code">is.affaire</field>
+        <field name="prefix"></field>
+        <field name="padding">5</field>
+        <field eval="False" name="company_id"/>
+    </record>
+    <record id="is_affaire_form" model="ir.ui.view">
+        <field name="name">is.affaire.form</field>
+        <field name="model">is.affaire</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field 
+                        name="state" 
+                        widget="statusbar"
+                        statusbar_visible="devis,abandonnee,active,soldee"
+                        clickable="True"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="intitule"/>
+                            <field name="partner_id"/>
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                        </group>
+                        <group>
+                            <field name="ca_previsionnel"/>
+                            <field name="frais_previsionnel"/>
+
+                        </group>
+                    </group>
+                    <group>
+                        <field name="commentaire"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_affaire_tree" model="ir.ui.view">
+        <field name="name">is.affaire.tree</field>
+        <field name="model">is.affaire</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="intitule"/>
+                <field name="partner_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="ca_previsionnel"/>
+                <field name="frais_previsionnel"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_affaire_search" model="ir.ui.view">
+        <field name="name">is.affaire.search</field>
+        <field name="model">is.affaire</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="intitule"/>
+                <field name="partner_id"/>
+                <field name="commentaire"/>
+                <field name="state"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_affaire_action" model="ir.actions.act_window">
+        <field name="name">Affaires</field>
+        <field name="res_model">is.affaire</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+</odoo>
