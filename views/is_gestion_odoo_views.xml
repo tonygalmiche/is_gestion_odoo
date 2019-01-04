@@ -40,6 +40,21 @@
                     <group>
                         <field name="commentaire"/>
                     </group>
+                    <group string="Factures">
+                        <field name="facture_ids" nolabel="1" readonly="1">
+                            <tree>
+                                <button string="Facture" name="acceder_facture_action" type="object" icon="fa-search-plus"/>
+                                <field name="date_invoice"/>
+                                <field name="number"/>
+                                <field name="date_due"/>
+                                <field name="amount_untaxed"      string="Total HT"   sum="Total"/>
+                                <field name="amount_tax"          string="TVA"        sum="Total"/>
+                                <field name="amount_total_signed" string="Total TTC"  sum="Total"/>
+                                <field name="residual_signed"     string="Restant du" sum="Total"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </group>
                 </sheet>
             </form>
         </field>

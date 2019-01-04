@@ -17,12 +17,14 @@ class IsAffaire(models.Model):
     ca_previsionnel    = fields.Float("CA prévisionnel", digits=(14,2))
     frais_previsionnel = fields.Float("Frais prévisionnel", digits=(14,2))
     commentaire        = fields.Text("Commentaire")
+    facture_ids        = fields.One2many('account.invoice', 'is_affaire_id', u'Factures')
     state              = fields.Selection([
             ('devis'     , u'Devis'),
             ('abandonnee', u'Abandonnée'),
             ('active'    , u'Active'),
             ('soldee'    , u'Soldée'),
         ], u"État", index=True, default='active')
+
 
     @api.model
     def create(self, vals):

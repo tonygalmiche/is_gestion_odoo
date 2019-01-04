@@ -41,4 +41,29 @@
     />
 
 
+    <menuitem
+        id="is_statistique_menu"
+        name="Statistiques"
+        parent="is_crm_main_menu"
+        sequence="40"
+    />
+    <menuitem
+        id="is_account_invoice_month_pivot_menu"
+        name="Factures par client et par mois"
+        parent="is_statistique_menu"
+        sequence="10"
+        action="is_account_invoice_month_pivot_action"
+    />
+    <menuitem
+        id="is_account_invoice_year_pivot_menu"
+        name="Factures par client et par an"
+        parent="is_statistique_menu"
+        sequence="20"
+        action="is_account_invoice_year_pivot_action"
+    />
+
+
+
+
+
 </odoo>

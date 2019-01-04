@@ -87,5 +87,46 @@ records.calculer_tva()
 
 
 
+        <record id="is_account_invoice_month_pivot" model="ir.ui.view">
+            <field name="name">is_account_invoice_month_pivot</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="partner_id"     type="row"/>
+                    <field name="date_invoice"   type="col" interval="month"/>
+                    <field name="amount_untaxed" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        <record  id="is_account_invoice_month_pivot_action" model="ir.actions.act_window">
+            <field name="name">Factures par client et par mois</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="limit">100</field>
+            <field name="view_id" ref="is_account_invoice_month_pivot"/>
+            <field name="view_mode">pivot,graph,tree,form</field>
+        </record>
+
+        <record id="is_account_invoice_year_pivot" model="ir.ui.view">
+            <field name="name">is_account_invoice_year_pivot</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="partner_id"     type="row"/>
+                    <field name="date_invoice"   type="col" interval="year"/>
+                    <field name="amount_untaxed" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        <record  id="is_account_invoice_year_pivot_action" model="ir.actions.act_window">
+            <field name="name">Factures par client et par an</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="limit">100</field>
+            <field name="view_id" ref="is_account_invoice_year_pivot"/>
+            <field name="view_mode">pivot,graph,tree,form</field>
+        </record>
+
+
     </data>
 </odoo>

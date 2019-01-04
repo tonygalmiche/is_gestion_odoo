@@ -5,7 +5,7 @@
     'author'   : 'InfoSaône',
     'category' : 'InfoSaône',
     'description': """
-Module Gestion Odoo 12 pour InfoSaône
+Module Gestion Odoo 12 pour InfoSaône 
 ===================================================
 """,
     'maintainer' : 'InfoSaône',

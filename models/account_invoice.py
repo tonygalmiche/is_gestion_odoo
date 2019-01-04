@@ -17,4 +17,22 @@ class AccountInvoice(models.Model):
             obj.compute_taxes()
 
 
+    @api.multi
+    def acceder_facture_action(self, vals):
+        for obj in self:
+
+            res= {
+                'name': 'Facture',
+                'view_mode': 'form',
+                'view_type': 'form',
+                'res_model': 'account.invoice',
+                'res_id': obj.id,
+                'type': 'ir.actions.act_window',
+                'view_id': self.env.ref('account.invoice_form').id,
+                'domain': [('type','=','out_invoice')],
+            }
+            return res
+
+
+
 
