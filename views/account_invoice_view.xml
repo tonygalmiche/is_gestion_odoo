@@ -39,7 +39,8 @@ records.calculer_tva()
             <field name="arch" type="xml">
                 <field name="user_id" position="replace">
                     <field name="is_affaire_id"/>
-                    <field name="id"/>
+                    <field name="is_amount_untaxed_percent"/>
+                    <!--<field name="id"/>-->
                 </field>
             </field>
         </record>
@@ -92,9 +93,10 @@ records.calculer_tva()
             <field name="model">account.invoice</field>
             <field name="arch" type="xml">
                 <pivot>
-                    <field name="partner_id"     type="row"/>
-                    <field name="date_invoice"   type="col" interval="month"/>
-                    <field name="amount_untaxed" type="measure"/>
+                    <field name="partner_id"                type="row"/>
+                    <field name="date_invoice"              type="col" interval="month"/>
+                    <field name="amount_untaxed"            type="measure"/>
+                    <field name="is_amount_untaxed_percent" type="measure" operator="+"/>
                 </pivot>
             </field>
         </record>
