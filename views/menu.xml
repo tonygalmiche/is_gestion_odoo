@@ -20,6 +20,13 @@
         action="is_affaire_action"
     />
     <menuitem
+        id="is_serveur_menu"
+        name="Serveurs"
+        parent="is_crm_main_menu"
+        sequence="25"
+        action="is_serveur_action"
+    />
+    <menuitem
         id="is_main_facture_menu"
         name="Factures"
         parent="is_crm_main_menu"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="is_serveur_form" model="ir.ui.view">
+        <field name="name">is.serveur.form</field>
+        <field name="model">is.serveur</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="adresse_ip"/>
+                        <field name="date_creation"/>
+                        <field name="date_fin"/>
+                        <field name="renouvellement_auto"/>
+                        <field name="mot_de_passe"/>
+                        <field name="systeme"/>
+                        <field name="type_vps"/>
+                        <field name="commentaire"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_serveur_tree" model="ir.ui.view">
+        <field name="name">is.serveur.tree</field>
+        <field name="model">is.serveur</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="adresse_ip"/>
+                <field name="date_creation"/>
+                <field name="date_fin"/>
+                <field name="renouvellement_auto"/>
+                <field name="mot_de_passe"/>
+                <field name="systeme"/>
+                <field name="type_vps"/>
+                <field name="commentaire"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_serveur_search" model="ir.ui.view">
+        <field name="name">is.serveur.search</field>
+        <field name="model">is.serveur</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="renouvellement_auto"/>
+                <field name="systeme"/>
+                <field name="type_vps"/>
+                <field name="commentaire"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_serveur_action" model="ir.actions.act_window">
+        <field name="name">Serveurs</field>
+        <field name="res_model">is.serveur</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

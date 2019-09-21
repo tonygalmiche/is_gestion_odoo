@@ -107,6 +107,7 @@ records.calculer_tva()
             <field name="limit">100</field>
             <field name="view_id" ref="is_account_invoice_month_pivot"/>
             <field name="view_mode">pivot,graph,tree,form</field>
+            <field name="domain">[('state','not in',['cancel'])]</field>
         </record>
 
         <record id="is_account_invoice_year_pivot" model="ir.ui.view">
@@ -127,6 +128,7 @@ records.calculer_tva()
             <field name="limit">100</field>
             <field name="view_id" ref="is_account_invoice_year_pivot"/>
             <field name="view_mode">pivot,graph,tree,form</field>
+            <field name="domain">[('state','not in',['cancel'])]</field>
         </record>
 
 

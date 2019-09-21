@@ -17,9 +17,10 @@ Module Gestion Odoo 12 pour InfoSaône
     ],
     'data' : [
         'security/ir.model.access.csv',
-        'views/is_gestion_odoo_views.xml',
-        'views/res_partner_views.xml',
-        'views/res_company_views.xml',
+        'views/is_affaire_view.xml',
+        'views/is_serveur_view.xml',
+        'views/res_partner_view.xml',
+        'views/res_company_view.xml',
         'views/account_invoice_view.xml',
         'views/menu.xml',
         'report/report_templates.xml',

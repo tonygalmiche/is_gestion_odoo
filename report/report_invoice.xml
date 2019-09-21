@@ -29,7 +29,7 @@
                     </div>
                     <br />
                     <br />
-                    <table>
+                    <table style="width:100%">
                         <thead>
                             <tr>
                                 <th class="text-left"><span>Description</span></th>
