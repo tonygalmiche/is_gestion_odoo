@@ -27,16 +27,12 @@
         </xpath>
         <xpath expr="//div[hasclass('footer')]" position="replace">
 
-
             <style>
                 .logo{
                     max-height: 20mm;
                     max-width: 20mm;
                 }
             </style>
-
-
-
 
             <div class="footer o_standard_footer">
                 <table style="width:100%;font-size:8pt;border-top: 1px solid black;">

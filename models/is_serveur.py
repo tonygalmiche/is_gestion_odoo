@@ -21,5 +21,5 @@ class IsServeur(models.Model):
     systeme             = fields.Char(u"Système")
     type_vps            = fields.Char(u"Type de VPS")
     commentaire         = fields.Text(u"Commentaire")
-
+    active              = fields.Boolean(u"Actif", default=True)
 

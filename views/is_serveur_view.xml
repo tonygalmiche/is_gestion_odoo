@@ -17,6 +17,7 @@
                         <field name="systeme"/>
                         <field name="type_vps"/>
                         <field name="commentaire"/>
+                        <field name="active"/>
                     </group>
                 </sheet>
             </form>
