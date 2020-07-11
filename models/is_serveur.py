@@ -5,6 +5,7 @@ from odoo.exceptions import Warning
 
 class IsServeur(models.Model):
     _name = 'is.serveur'
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
     _description = "Serveur"
     _order = 'name'
 
@@ -21,5 +22,7 @@ class IsServeur(models.Model):
     systeme             = fields.Char(u"Système")
     type_vps            = fields.Char(u"Type de VPS")
     commentaire         = fields.Text(u"Commentaire")
-    active              = fields.Boolean(u"Actif", default=True)
+    grafana             = fields.Boolean(u"Grafana", default=False)
+    sauvegarde          = fields.Boolean(u"Vérification sauvegarde", default=True)
+    active              = fields.Boolean(u"Actif"  , default=True)
 
