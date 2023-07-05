@@ -1,4 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_is_affaire,access_is_affaire,model_is_affaire,base.group_user,1,1,1,1
 access_is_serveur,access_is_serveur,model_is_serveur,base.group_user,1,1,1,1
-
+access_is_systeme,access_is_systeme,model_is_systeme,base.group_user,1,1,1,1
+access_is_type_vps,access_is_type_vps,model_is_type_vps,base.group_user,1,1,1,1
+access_is_service,access_is_service,model_is_service,base.group_user,1,1,1,1

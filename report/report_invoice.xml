@@ -24,6 +24,7 @@
                                 <t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/><br /></t>
                                 <t t-if="o.partner_id.zip"><span t-field="o.partner_id.zip"/> </t>
                                 <t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/><br /></t>
+                                <t t-if="o.partner_id.siret">SIREN : <span t-field="o.partner_id.siret"/><br /></t>
                             </b>
                         </div>
                     </div>
@@ -84,6 +85,7 @@
                         </tbody>
                     </table>
                     <br />
+                    <p>Les opérations donnant lieu à facture sont constituées exclusivement de prestations de services.</p>
                     Paiement par chèque ou par virement sur ce compte : 
                     <table>
                         <tr>
@@ -95,6 +97,8 @@
                             <td>CMCIFR2A</td>
                         </tr>
                     </table>
+                    <br />
+
                     <!--TODO : Il faut conserver cette partie pour des raisons d'héritage -->
                     <div class="clearfix">
                         <div id="total" class="row">

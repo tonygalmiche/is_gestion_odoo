@@ -14,7 +14,8 @@
                         <span t-field="company.email"/>
                     </div>
                     <div class="col-4 text-right" style="font-size:16pt;font-weight:bold">
-                        <div>Facture N°<span t-field="o.number"/></div>
+                        <div t-if="o.type == 'out_invoice'">Facture N°<span t-field="o.number"/></div>
+                        <div t-if="o.type == 'out_refund'">Avoir N°<span t-field="o.number"/></div>
                         <div>du <span t-field="o.date_invoice"/></div>
                     </div>
                 </div>
@@ -35,7 +36,7 @@
             </style>
 
             <div class="footer o_standard_footer">
-                <table style="width:100%;font-size:8pt;border-top: 1px solid black;">
+                <!-- <table style="width:100%;font-size:8pt;border-top: 1px solid black;">
                     <tr>
                         <td style="width:16%;text-align:center">
                             <img t-att-src="'/is_gestion_odoo/static/src/img/cpcb.png'"          style="max-height:20mm;max-width:30mm"/>
@@ -60,18 +61,22 @@
                         <td style="text-align:center">Membre de l'Odoo<br />Community Association</td>
                         <td style="text-align:center">Référencé sur Datadock</td>
                     </tr>
-                </table>
+                </table> -->
                 <table style="width:100%;font-size:8pt;border-top: 1px solid black;margin-top:3mm">
                     <tr>
-                        <td style="width:90%">
+                        <td style="width:75%">
                             Sans escompte si règlement anticipé.<br />
                             En cas de retard de paiement, un intérêt de retard de 0,50 % par mois sera appliqué au montant HT de la facture.<br />
                             SARL au capital de 8000€ - R.C.S. DIJON 529 460 909 – N° de Gestion 2011 B 20<br />
                             N°SIRET : <span t-field="company.siret"/>  - N° TVA intracommunautaire : <span t-field="company.vat"/><br />
                             Numéro de déclaration d’activité : 26 21 02647 21 obtenu auprès de la préfecture de Bourgogne le 06/08/2009<br />
                         </td>
+                        <td style="width:15%;text-align:center;vertical-align:middle">
+                            <img t-att-src="'/is_gestion_odoo/static/src/img/odoo-oca.png'" style="max-height:20mm;max-width:30mm"/><br />
+                            Membre de l'Odoo<br />Community Association
+                        </td>
                         <td style="text-align:right;vertical-align:middle">
-                            Page <span class="page"/> / <span class="topage"/>
+                                Page <span class="page"/> / <span class="topage"/>
                         </td>
                     </tr>
                 </table>

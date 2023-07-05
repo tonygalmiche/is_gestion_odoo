@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <!-- is.serveur -->
     <record id="is_serveur_form" model="ir.ui.view">
         <field name="name">is.serveur.form</field>
         <field name="model">is.serveur</field>
@@ -9,13 +11,15 @@
                     <group>
                         <field name="name"/>
                         <field name="partner_id"/>
+                        <field name="fournisseur_id"/>
+                        <field name="service_id"/>
                         <field name="adresse_ip"/>
                         <field name="date_creation"/>
                         <field name="date_fin"/>
                         <field name="renouvellement_auto"/>
                         <field name="mot_de_passe"/>
-                        <field name="systeme"/>
-                        <field name="type_vps"/>
+                        <field name="systeme_id"/>
+                        <field name="type_vps_id"/>
                         <field name="grafana"/>
                         <field name="sauvegarde"/>
                         <field name="commentaire"/>
@@ -30,26 +34,6 @@
             </form>
         </field>
     </record>
-    <record id="is_serveur_tree" model="ir.ui.view">
-        <field name="name">is.serveur.tree</field>
-        <field name="model">is.serveur</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="partner_id"/>
-                <field name="adresse_ip"/>
-                <field name="date_creation"/>
-                <field name="date_fin"/>
-                <field name="renouvellement_auto"/>
-                <field name="mot_de_passe"/>
-                <field name="systeme"/>
-                <field name="type_vps"/>
-                <field name="grafana"/>
-                <field name="sauvegarde"/>
-                <field name="commentaire"/>
-            </tree>
-        </field>
-    </record>
     <record id="is_serveur_search" model="ir.ui.view">
         <field name="name">is.serveur.search</field>
         <field name="model">is.serveur</field>
@@ -57,17 +41,198 @@
             <search>
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="fournisseur_id"/>
+                <field name="service_id"/>
                 <field name="renouvellement_auto"/>
-                <field name="systeme"/>
-                <field name="type_vps"/>
+                <field name="systeme_id"/>
+                <field name="type_vps_id"/>
                 <field name="grafana"/>
                 <field name="commentaire"/>
+                <group expand="0" string="Group By...">
+                    <filter name="group_by_systeme_id"     string="Système"     context="{'group_by':'systeme_id'}"/>
+                    <filter name="group_by_partner_id"     string="Client"      context="{'group_by':'partner_id'}"/>
+                    <filter name="group_by_fournisseur_id" string="Fournisseur" context="{'group_by':'fournisseur_id'}"/>
+                    <filter name="group_by_type_vps_id"    string="Type de VPS" context="{'group_by':'type_vps_id'}"/>
+                    <filter name="group_by_service_id"     string="Service"     context="{'group_by':'service_id'}"/>
+                </group>
            </search>
         </field>
     </record>
+
+
+    <record id="is_serveur_tree" model="ir.ui.view">
+        <field name="name">is.serveur.tree</field>
+        <field name="model">is.serveur</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="fournisseur_id"/>
+                <field name="service_id"/>
+                <field name="adresse_ip"/>
+                <field name="date_creation"/>
+                <field name="date_fin"/>
+                <field name="renouvellement_auto"/>
+                <field name="mot_de_passe"/>
+                <field name="systeme_id"/>
+                <field name="type_vps_id"/>
+                <field name="grafana"/>
+                <field name="sauvegarde"/>
+                <field name="commentaire"/>
+            </tree>
+        </field>
+    </record>
     <record  id="is_serveur_action" model="ir.actions.act_window">
-        <field name="name">Serveurs</field>
+        <field name="name">Serveurs (Affichage complet)</field>
         <field name="res_model">is.serveur</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+   <record id="is_serveur_simplifie_tree" model="ir.ui.view">
+        <field name="name">is_serveur_simplifie_tree</field>
+        <field name="model">is.serveur</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="fournisseur_id"/>
+                <field name="service_id"/>
+                <field name="date_creation"/>
+                <field name="systeme_id"/>
+                <field name="type_vps_id"/>
+            </tree>
+        </field>
+    </record>
+    <record  id="is_serveur_simplifie_action" model="ir.actions.act_window">
+        <field name="name">Serveurs (Affichage simplifié)</field>
+        <field name="res_model">is.serveur</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="is_serveur_simplifie_tree"/>
+    </record>
+
+
+    <!-- is.systeme -->
+    <record id="is_systeme_form" model="ir.ui.view">
+        <field name="name">is.systeme.form</field>
+        <field name="model">is.systeme</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                     </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_systeme_tree" model="ir.ui.view">
+        <field name="name">is.systeme.tree</field>
+        <field name="model">is.systeme</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_systeme_search" model="ir.ui.view">
+        <field name="name">is.systeme.search</field>
+        <field name="model">is.systeme</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_systeme_action" model="ir.actions.act_window">
+        <field name="name">Systèmes</field>
+        <field name="res_model">is.systeme</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- is.type.vps -->
+    <record id="is_type_vps_form" model="ir.ui.view">
+        <field name="name">is.type.vps.form</field>
+        <field name="model">is.type.vps</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                     </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_type_vps_tree" model="ir.ui.view">
+        <field name="name">is.type.vps.tree</field>
+        <field name="model">is.type.vps</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_type_vps_search" model="ir.ui.view">
+        <field name="name">is.type.vps.search</field>
+        <field name="model">is.type.vps</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_type_vps_action" model="ir.actions.act_window">
+        <field name="name">Type de VPS</field>
+        <field name="res_model">is.type.vps</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- is.service -->
+    <record id="is_service_form" model="ir.ui.view">
+        <field name="name">is.service.form</field>
+        <field name="model">is.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                     </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_service_tree" model="ir.ui.view">
+        <field name="name">is.service.tree</field>
+        <field name="model">is.service</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_service_search" model="ir.ui.view">
+        <field name="name">is.service.search</field>
+        <field name="model">is.service</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_service_action" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="res_model">is.service</field>
         <field name="view_type">form</field>
         <field name="limit">100</field>
         <field name="view_mode">tree,form</field>

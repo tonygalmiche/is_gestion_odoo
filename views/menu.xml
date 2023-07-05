@@ -19,13 +19,56 @@
         sequence="20"
         action="is_affaire_action"
     />
+
+
+    <!-- Serveurs -->
     <menuitem
-        id="is_serveur_menu"
+        id="is_serveur_main_menu"
         name="Serveurs"
         parent="is_crm_main_menu"
         sequence="25"
+    />
+    <menuitem
+        id="is_serveur_menu"
+        name="Serveurs (Affichage complet)"
+        parent="is_serveur_main_menu"
+        sequence="10"
         action="is_serveur_action"
     />
+    <menuitem
+        id="is_serveur_simplifie_menu"
+        name="Serveurs (Affichage simplifié)"
+        parent="is_serveur_main_menu"
+        sequence="20"
+        action="is_serveur_simplifie_action"
+    />
+
+    <menuitem
+        id="is_systeme_menu"
+        name="Systèmes"
+        parent="is_serveur_main_menu"
+        sequence="900"
+        action="is_systeme_action"
+    />
+    <menuitem
+        id="is_type_vps_menu"
+        name="Types de VPS"
+        parent="is_serveur_main_menu"
+        sequence="910"
+        action="is_type_vps_action"
+    />
+    <menuitem
+        id="is_service_menu"
+        name="Services"
+        parent="is_serveur_main_menu"
+        sequence="920"
+        action="is_service_action"
+    />
+
+
+
+
+
     <menuitem
         id="is_main_facture_menu"
         name="Factures"
